@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ecoMD | Nature Meets Skincare</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f8faf5;
+    color: #243b2b;
+}
+
+header {
+    background: white;
+    padding: 18px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 30px;
+    font-weight: bold;
+    color: #245b36;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+.logo span {
+    color: #8bad63;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #294333;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+nav a:hover {
+    color: #80a95d;
+}
+
+.cart-count {
+    background: #315f3c;
+    color: white;
+    padding: 3px 7px;
+    border-radius: 20px;
+    font-size: 11px;
+}
+
+.hero {
+    min-height: 520px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 65px 9%;
+    background: linear-gradient(110deg, #edf3e6, #f8f4e9);
+    gap: 30px;
+}
+
+.hero-text {
+    max-width: 520px;
+}
+
+.hero-text small {
+    color: #73934f;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.hero h1 {
+    font-size: 55px;
+    line-height: 1.12;
+    margin: 18px 0;
+    color: #244b32;
+}
+
+.hero p {
+    font-size: 17px;
+    line-height: 1.8;
+    color: #637366;
+}
+
+.hero-art {
+    width: 42%;
+    max-width: 430px;
+    min-height: 320px;
+    border-radius: 25px;
+    background: linear-gradient(135deg,#dcebd2,#f8f1dc);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-art .bottle {
+    width: 130px;
+    height: 235px;
+    background: linear-gradient(90deg,#3e8a55,#a7c985,#397c49);
+    border-radius: 25px 25px 35px 35px;
+    position: relative;
+    box-shadow: 12px 18px 25px #6c816655;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    line-height: 1.5;
+    border: 3px solid #ffffff88;
+}
+
+.hero-art .bottle:before {
+    content: "";
+    position: absolute;
+    top: -28px;
+    width: 55px;
+    height: 30px;
+    background: #315f3c;
+    border-radius: 7px 7px 2px 2px;
+}
+
+.hero-art .bottle:after {
+    content: "ecoMD";
+    position: absolute;
+    top: 75px;
+    background: #ffffffdd;
+    color: #315f3c;
+    width: 100%;
+    padding: 15px 0;
+    font-size: 20px;
+}
+
+.hero-art .bottle span {
+    position: absolute;
+    bottom: 43px;
+    font-size: 11px;
+}
+
+.section {
+    padding: 75px 8%;
+    text-align: center;
+}
+
+.section h2 {
+    font-size: 34px;
+    color: #285438;
+    margin-bottom: 12px;
+}
+
+.section-subtitle {
+    color: #78877b;
+    margin-bottom: 40px;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+.product-card {
+    background: white;
+    border-radius: 16px;
+    padding: 18px;
+    box-shadow: 0 5px 22px rgba(0,0,0,0.06);
+    transition: 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+/* UNIQUE PRODUCT ARTWORK */
+
+.product-image {
+    height: 210px;
+    border-radius: 12px;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.product-image:before,
+.product-image:after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.3;
+}
+
+.product-image:before {
+    width: 150px;
+    height: 150px;
+    top: -45px;
+    left: -35px;
+    background: white;
+}
+
+.product-image:after {
+    width: 120px;
+    height: 120px;
+    bottom: -40px;
+    right: -25px;
+    background: white;
+}
+
+.art-green { background: linear-gradient(135deg,#c6edc4,#65b66e); }
+.art-gold { background: linear-gradient(135deg,#fff1ad,#e9ae28); }
+.art-purple { background: linear-gradient(135deg,#e6d6ff,#9672cc); }
+.art-orange { background: linear-gradient(135deg,#ffdfb6,#e98b31); }
+.art-yellow { background: linear-gradient(135deg,#fff5b5,#f0c43f); }
+.art-blue { background: linear-gradient(135deg,#d7efff,#73b5e5); }
+.art-pink { background: linear-gradient(135deg,#ffe0e9,#e78aa8); }
+.art-vitamin { background: linear-gradient(135deg,#fff0b8,#edaa3e); }
+
+.bottle-small {
+    width: 88px;
+    height: 135px;
+    border-radius: 13px 13px 20px 20px;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 1.5;
+    border: 3px solid #ffffffaa;
+    box-shadow: 8px 12px 18px #33443355;
+    padding-top: 20px;
+}
+
+.bottle-small:before {
+    content: "";
+    width: 36px;
+    height: 24px;
+    position: absolute;
+    top: -23px;
+    border-radius: 6px 6px 2px 2px;
+    background: inherit;
+    filter: brightness(.65);
+}
+
+.bottle-small:after {
+    content: "ecoMD";
+    position: absolute;
+    top: 45px;
+    left: 0;
+    right: 0;
+    background: #ffffffdd;
+    color: #315f3c;
+    padding: 8px 0;
+    font-size: 13px;
+}
+
+.bottle-small span {
+    position: absolute;
+    bottom: 17px;
+    font-size: 9px;
+}
+
+.bottle-green { background: linear-gradient(90deg,#28753d,#83c778,#28753d); }
+.bottle-gold { background: linear-gradient(90deg,#a77a10,#f1d35a,#a77a10); }
+.bottle-purple { background: linear-gradient(90deg,#60448f,#b99be8,#60448f); }
+.bottle-orange { background: linear-gradient(90deg,#b65b1c,#f5a04e,#b65b1c); }
+.bottle-yellow { background: linear-gradient(90deg,#b78b19,#f9df65,#b78b19); }
+.bottle-blue { background: linear-gradient(90deg,#397aa8,#a4d9f4,#397aa8); }
+.bottle-pink { background: linear-gradient(90deg,#a94f75,#f4aac5,#a94f75); }
+.bottle-vitamin { background: linear-gradient(90deg,#b77a19,#f6c65e,#b77a19); }
+
+.fruit {
+    position: absolute;
+    z-index: 3;
+    font-size: 38px;
+    bottom: 16px;
+    right: 16px;
+    filter: drop-shadow(0 3px 3px #0002);
+}
+
+.product-card h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #315c3d;
+}
+
+.product-card p {
+    font-size: 14px;
+    color: #78877b;
+    min-height: 40px;
+}
+
+.price {
+    font-size: 21px;
+    font-weight: bold;
+    color: #638b4e;
+    margin: 12px 0;
+}
+
+.add-button {
+    background: #315f3c;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: bold;
+    width: 100%;
+}
+
+.add-button:hover {
+    background: #23472d;
+}
+
+/* SEPARATE CART PAGE */
+
+.cart-page {
+    display: none;
+    min-height: 75vh;
+    padding: 45px 8%;
+    background: #f4f7f1;
+}
+
+.cart-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.cart-heading h2 {
+    color: #285438;
+    font-size: 30px;
+}
+
+.back-button {
+    background: white;
+    border: 1px solid #dce6d7;
+    color: #315f3c;
+    padding: 11px 18px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.cart-layout {
+    display: grid;
+    grid-template-columns: 1.7fr 1fr;
+    gap: 25px;
+    align-items: start;
+}
+
+.cart-products,
+.order-summary {
+    background: white;
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+}
+
+.cart-products h3,
+.order-summary h3 {
+    color: #315f3c;
+    margin-bottom: 18px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 17px 0;
+    border-bottom: 1px solid #e8eee5;
+}
+
+.cart-item-info {
+    flex: 1;
+}
+
+.cart-item-info strong {
+    color: #315c3d;
+    font-size: 15px;
+}
+
+.cart-item-info small {
+    display: block;
+    color: #78877b;
+    margin-top: 7px;
+}
+
+.quantity-control {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #edf5e9;
+    border: 1px solid #b8d2ae;
+    padding: 5px;
+    border-radius: 9px;
+}
+
+.quantity-control button {
+    width: 29px;
+    height: 29px;
+    background: #315f3c;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.quantity-control span {
+    min-width: 18px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.remove-button {
+    background: #fff0ed;
+    border: none;
+    color: #ba4b3d;
+    padding: 8px 10px;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin: 17px 0;
+    color: #657468;
+}
+
+.summary-total {
+    border-top: 1px solid #e2e9df;
+    padding-top: 18px;
+    color: #285438;
+    font-size: 21px;
+    font-weight: bold;
+}
+
+.buy-button {
+    width: 100%;
+    padding: 15px;
+    background: #315f3c;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.buy-button:hover {
+    background: #23472d;
+}
+
+.empty-cart {
+    text-align: center;
+    padding: 45px 15px;
+    color: #78877b;
+}
+
+.empty-cart h3 {
+    margin-bottom: 10px;
+}
+
+.empty-cart button {
+    margin-top: 20px;
+    padding: 12px 20px;
+    background: #315f3c;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.about {
+    background: #edf3e8;
+}
+
+.about p {
+    max-width: 750px;
+    margin: auto;
+    line-height: 1.9;
+    color: #607365;
+    font-size: 16px;
+}
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin-top: 40px;
+}
+
+.feature {
+    background: white;
+    padding: 28px 18px;
+    border-radius: 14px;
+}
+
+.feature h3 {
+    color: #315f3c;
+    margin-bottom: 10px;
+}
+
+.feature p {
+    font-size: 14px;
+}
+
+.contact {
+    background: white;
+}
+
+.contact p {
+    line-height: 2;
+    color: #647568;
+}
+
+footer {
+    background: #244b32;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    line-height: 1.8;
+}
+
+@media (max-width: 950px) {
+    .products {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .cart-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav {
+        gap: 13px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    nav a {
+        font-size: 12px;
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 50px 7%;
+    }
+
+    .hero h1 {
+        font-size: 40px;
+    }
+
+    .hero-art {
+        width: 100%;
+        max-width: 350px;
+    }
+
+    .products,
+    .features {
+        grid-template-columns: 1fr;
+    }
+
+    .section {
+        padding: 55px 6%;
+    }
+
+    .cart-page {
+        padding: 30px 5%;
+    }
+
+    .cart-item {
+        flex-wrap: wrap;
+    }
+
+    .cart-heading h2 {
+        font-size: 24px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo" onclick="showHome()">eco<span>MD</span></div>
+
+    <nav>
+        <a onclick="showHome()">HOME</a>
+        <a onclick="showCart()">
+            VIEW CART <span class="cart-count" id="cartCount">0</span>
+        </a>
+        <a onclick="showSection('about')">ABOUT</a>
+        <a onclick="showSection('contact')">CONTACT</a>
+    </nav>
+</header>
+
+<!-- HOME PAGE -->
+
+<main id="homePage">
+
+    <section class="hero" id="home">
+        <div class="hero-text">
+            <small>NATURE MEETS SKINCARE</small>
+            <h1>Love Your Skin.<br>Love Nature.</h1>
+            <p>
+                Discover skincare inspired by nature.
+                Give your skin the care it deserves with
+                ecoMD face washes.
+            </p>
+        </div>
+
+        <div class="hero-art">
+            <div class="bottle">
+                <span>NATURE MEETS SKINCARE</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="products">
+        <h2>Our Face Wash Collection</h2>
+        <p class="section-subtitle">
+            Discover your favourite everyday skincare.
+        </p>
+
+        <div class="products" id="productList"></div>
+    </section>
+
+    <section class="section about" id="about">
+        <h2>About ecoMD</h2>
+
+        <p>
+            Welcome to ecoMD – Nature Meets Skincare.
+            Our aim is to make everyday skincare simple,
+            enjoyable and inspired by nature.
+            We believe that taking care of your skin
+            should be a part of your everyday routine.
+        </p>
+
+        <div class="features">
+            <div class="feature">
+                <h3>Nature Inspired</h3>
+                <p>Skincare inspired by the goodness of nature.</p>
+            </div>
+
+            <div class="feature">
+                <h3>Everyday Care</h3>
+                <p>Products designed for your daily skincare routine.</p>
+            </div>
+
+            <div class="feature">
+                <h3>Made With Care</h3>
+                <p>We believe every skin deserves attention and care.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section contact" id="contact">
+        <h2>Contact Us</h2>
+        <p>
+            Have a question? We would love to hear from you.
+            <br><br>
+            Phone: +91 9712949011
+        </p>
+    </section>
+
+</main>
+
+<!-- SEPARATE CART PAGE -->
+
+<section class="cart-page" id="cartPage">
+
+    <div class="cart-heading">
+        <h2>My Shopping Cart</h2>
+        <button class="back-button" onclick="showHome()">
+            ← Continue Shopping
+        </button>
+    </div>
+
+    <div class="cart-layout">
+
+        <div class="cart-products">
+            <h3>Your Selected Products</h3>
+            <div id="cartItems"></div>
+        </div>
+
+        <div class="order-summary">
+            <h3>Order Summary</h3>
+
+            <div class="summary-row">
+                <span>Total Items</span>
+                <strong id="totalItems">0</strong>
+            </div>
+
+            <div class="summary-row">
+                <span>Subtotal</span>
+                <strong id="subtotal">₹0</strong>
+            </div>
+
+            <div class="summary-row summary-total">
+                <span>Total Amount</span>
+                <span id="grandTotal">₹0</span>
+            </div>
+
+            <button class="buy-button" onclick="buyNow()">
+                BUY NOW
+            </button>
+
+            <p style="font-size:12px;color:#849184;text-align:center;margin-top:13px;">
+                Your order total is shown above.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<footer>
+    <h2>ecoMD</h2>
+    <p>NATURE MEETS SKINCARE</p>
+    <p>© 2026 ecoMD. All rights reserved.</p>
+</footer>
+
+<script>
+
+// PRODUCT INFORMATION
+
+const products = [
+    {
+        name: "ecoMD Aloe Vera Face Wash",
+        price: 199,
+        description: "Fresh and gentle everyday cleansing.",
+        art: "art-green",
+        bottle: "bottle-green",
+        emoji: "🌿",
+        label: "ALOE VERA"
+    },
+    {
+        name: "ecoMD Vitamin C Face Wash",
+        price: 249,
+        description: "A refreshing addition to your routine.",
+        art: "art-vitamin",
+        bottle: "bottle-vitamin",
+        emoji: "🍊",
+        label: "VITAMIN C"
+    },
+    {
+        name: "ecoMD Daily Face Wash",
+        price: 179,
+        description: "Simple skincare for everyday use.",
+        art: "art-purple",
+        bottle: "bottle-purple",
+        emoji: "💜",
+        label: "DAILY CARE"
+    },
+    {
+        name: "ecoMD Turmeric Face Wash",
+        price: 199,
+        description: "Inspired by the goodness of turmeric.",
+        art: "art-orange",
+        bottle: "bottle-orange",
+        emoji: "🧡",
+        label: "TURMERIC"
+    },
+    {
+        name: "ecoMD Lemon Face Wash",
+        price: 189,
+        description: "A fresh citrus-inspired experience.",
+        art: "art-gold",
+        bottle: "bottle-gold",
+        emoji: "🍋",
+        label: "LEMON"
+    },
+    {
+        name: "ecoMD Mint Face Wash",
+        price: 189,
+        description: "A cool and refreshing experience.",
+        art: "art-blue",
+        bottle: "bottle-blue",
+        emoji: "🌱",
+        label: "MINT"
+    },
+    {
+        name: "ecoMD Litchi Face Wash",
+        price: 219,
+        description: "A fruity-inspired cleansing experience.",
+        art: "art-pink",
+        bottle: "bottle-pink",
+        emoji: "🍓",
+        label: "LITCHI"
+    },
+    {
+        name: "ecoMD Pineapple Face Wash",
+        price: 219,
+        description: "A tropical-inspired skincare experience.",
+        art: "art-yellow",
+        bottle: "bottle-yellow",
+        emoji: "🍍",
+        label: "PINEAPPLE"
+    }
+];
+
+let cart = [];
+
+// DISPLAY PRODUCTS WITH DIFFERENT ARTWORK
+
+function displayProducts() {
+    const productList = document.getElementById("productList");
+
+    productList.innerHTML = products.map((product, index) => `
+        <div class="product-card">
+
+            <div class="product-image ${product.art}">
+                <div class="bottle-small ${product.bottle}">
+                    <span>${product.label}</span>
+                </div>
+                <div class="fruit">${product.emoji}</div>
+            </div>
+
+            <h3>${product.name}</h3>
+            <p>${product.description}</p>
+            <div class="price">₹${product.price}</div>
+
+            <button class="add-button"
+                onclick="addToCart(${index})">
+                ADD TO CART
+            </button>
+
+        </div>
+    `).join("");
+}
+
+// ADD TO CART
+
+function addToCart(index) {
+    const product = products[index];
+
+    let existingItem = cart.find(item => item.name === product.name);
+
+    if (existingItem) {
+        existingItem.quantity++;
+    } else {
+        cart.push({
+            name: product.name,
+            price: product.price,
+            quantity: 1
+        });
+    }
+
+    updateCart();
+    alert(product.name + " added to your cart!");
+}
+
+// INCREASE OR DECREASE QUANTITY
+
+function changeQuantity(index, change) {
+    cart[index].quantity += change;
+
+    if (cart[index].quantity <= 0) {
+        cart.splice(index, 1);
+    }
+
+    updateCart();
+}
+
+// REMOVE PRODUCT
+
+function removeItem(index) {
+    cart.splice(index, 1);
+    updateCart();
+}
+
+// UPDATE CART
+
+function updateCart() {
+    let total = 0;
+    let count = 0;
+
+    cart.forEach(item => {
+        total += item.price * item.quantity;
+        count += item.quantity;
+    });
+
+    document.getElementById("cartCount").innerText = count;
+    document.getElementById("totalItems").innerText = count;
+    document.getElementById("subtotal").innerText = "₹" + total;
+    document.getElementById("grandTotal").innerText = "₹" + total;
+
+    let cartItems = document.getElementById("cartItems");
+
+    if (cart.length === 0) {
+        cartItems.innerHTML = `
+            <div class="empty-cart">
+                <h3>Your cart is empty!</h3>
+                <p>You haven't added any products yet.</p>
+                <button onclick="showHome()">START SHOPPING</button>
+            </div>
+        `;
+        return;
+    }
+
+    cartItems.innerHTML = cart.map((item, index) => `
+        <div class="cart-item">
+
+            <div class="cart-item-info">
+                <strong>${item.name}</strong>
+                <small>₹${item.price} per item</small>
+                <small>Item total: ₹${item.price * item.quantity}</small>
+            </div>
+
+            <div class="quantity-control">
+                <button onclick="changeQuantity(${index}, -1)">−</button>
+                <span>${item.quantity}</span>
+                <button onclick="changeQuantity(${index}, 1)">+</button>
+            </div>
+
+            <button class="remove-button"
+                onclick="removeItem(${index})">
+                REMOVE
+            </button>
+
+        </div>
+    `).join("");
+}
+
+// OPEN CART PAGE
+
+function showCart() {
+    document.getElementById("homePage").style.display = "none";
+    document.getElementById("cartPage").style.display = "block";
+
+    updateCart();
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+// GO TO HOME PAGE
+
+function showHome() {
+    document.getElementById("cartPage").style.display = "none";
+    document.getElementById("homePage").style.display = "block";
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+// ABOUT AND CONTACT NAVIGATION
+
+function showSection(sectionId) {
+    showHome();
+
+    setTimeout(() => {
+        document.getElementById(sectionId).scrollIntoView({
+            behavior: "smooth"
+        });
+    }, 50);
+}
+
+// BUY NOW DEMO
+
+function buyNow() {
+    if (cart.length === 0) {
+        alert("Your cart is empty! Please add products first.");
+        return;
+    }
+
+    alert("Thank you for choosing ecoMD! Online ordering and payment will be connected when your website is ready for real orders.");
+}
+
+// START WEBSITE
+
+displayProducts();
+updateCart();
+
+</script>
+
+</body>
+</html>
